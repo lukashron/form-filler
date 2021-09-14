@@ -1,0 +1,21 @@
+{
+    "name": "lukashron/form-filler",
+    "description": "Form filler for easy testing forms.",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Lukas Hron",
+            "email": "info@lukashron.cz"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "LukasHron\\FormFiller\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
