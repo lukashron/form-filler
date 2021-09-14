@@ -20,7 +20,7 @@ class Filler
     public static function enabled($mode = null)
     {
         if (self::detectActiveFromMode($mode)) {
-            echo '<script type="text/javascript">';
+            echo '<script type="text/javascript" async>';
                 array_map(function ($file) { echo '(function() {', file_get_contents($file), '})();'; }, [
                     __DIR__ . '/js/FormFiller.js'
                 ]);

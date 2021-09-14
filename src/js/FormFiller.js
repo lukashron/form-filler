@@ -57,4 +57,6 @@ class FormFiller
     }
 }
 
-new FormFiller().init();
+window.onload = function WindowLoad(event) {
+    new FormFiller().init();
+}
