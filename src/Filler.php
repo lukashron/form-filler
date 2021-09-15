@@ -20,11 +20,25 @@ class Filler
     public static function enabled($mode = null)
     {
         if (self::detectActiveFromMode($mode)) {
+
+            /**
+             * Stylesheets
+             */
+            echo '<style type="text/css">';
+                array_map(function ($file) { echo file_get_contents($file); }, [
+                    __DIR__ . '/css/panel.css'
+                ]);
+            echo '</style>';
+
+            /**
+             * Scripts
+             */
             echo '<script type="text/javascript" async>';
                 array_map(function ($file) { echo '(function() {', file_get_contents($file), '})();'; }, [
                     __DIR__ . '/js/FormFiller.js'
                 ]);
             echo '</script>';
+
         }
     }
 

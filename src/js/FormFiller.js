@@ -5,9 +5,28 @@ class FormFiller
     init() {
         console.log('Form filler run');
 
-        this.searchElements()
-        this.filled();
+        this.renderPanel();
+        this.searchElements();
+
+        // Auto-fill on load
+        // this.filled();
     }
+
+    /**
+     * Panel
+     */
+    renderPanel() {
+        document.body.insertAdjacentHTML(
+            'beforeend',
+            '<div id="form-filler-panel">'
+                + '<button id="form-filler-action-filled">F</button>'
+                + '<button id="form-filler-action-clear">C</button>'
+            + '</div>');
+    }
+
+    /**
+     * Filler
+     */
 
     searchElements() {
         this.formElements = document.querySelectorAll('input, textarea');
@@ -55,8 +74,29 @@ class FormFiller
             element.value = value;
         }
     }
+
+    cleanInputs() {
+        for (let input of this.formElements) {
+            input.value = '';
+        }
+    }
 }
 
 window.onload = function WindowLoad(event) {
-    new FormFiller().init();
+    let FormFillerClass = new FormFiller();
+    FormFillerClass.init();
+
+    document
+        .getElementById('form-filler-action-clear')
+        .addEventListener('click', function () {
+            FormFillerClass.cleanInputs();
+        }
+    );
+
+    document
+        .getElementById('form-filler-action-filled')
+        .addEventListener('click', function () {
+            FormFillerClass.filled();
+        }
+    );
 }
