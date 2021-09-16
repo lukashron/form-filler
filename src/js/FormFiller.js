@@ -1,5 +1,5 @@
 class FormFiller {
-    formElements;
+    formElements = [];
 
     init() {
         console.log('Form filler run');
@@ -29,7 +29,11 @@ class FormFiller {
      */
 
     searchElements() {
-        this.formElements = document.querySelectorAll('input:not([value]), textarea');
+        for (let input of document.querySelectorAll('input, textarea')) {
+            if (! input.value.length > 0 || input.type === 'checkbox') {
+                this.formElements.push(input);
+            }
+        }
     }
 
     filled() {
