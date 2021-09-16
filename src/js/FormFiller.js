@@ -29,24 +29,18 @@ class FormFiller
      */
 
     searchElements() {
-        this.formElements = document.querySelectorAll('input, textarea');
+        this.formElements = document.querySelectorAll('input:not([value]), textarea');
     }
 
     filled() {
         for (let input of this.formElements) {
             switch (input.type) {
                 case 'textarea':
-                    this.setElementValueWhenEmpty(
-                        input,
-                        'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas libero.'
-                    );
+                    input.value ='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas libero.';
                     break;
 
                 case 'email':
-                    this.setElementValueWhenEmpty(
-                        input,
-                        'test@example.domain'
-                    );
+                    input.value = 'test@example.domain';
                     break;
 
                 case 'checkbox':
@@ -61,23 +55,18 @@ class FormFiller
                     break;
 
                 default:
-                    this.setElementValueWhenEmpty(
-                        input,
-                        'Example value ' + Math.floor(Math.random() * 1000)
-                    );
+                    input.value = 'Example value ' + Math.floor(Math.random() * 1000);
             }
-        }
-    }
-
-    setElementValueWhenEmpty(element, value) {
-        if (element.value === '') {
-            element.value = value;
         }
     }
 
     cleanInputs() {
         for (let input of this.formElements) {
             input.value = '';
+
+            if (input.checked === true) {
+                input.checked = false;
+            }
         }
     }
 }
