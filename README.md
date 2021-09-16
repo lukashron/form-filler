@@ -1,5 +1,7 @@
 # Form Filler
 
+![Screenshot](https://www.lukashron.cz/media/files/form-filler.png)
+
 ## Install
 ```
 composer require lukashron/form-filler
