@@ -1,5 +1,4 @@
-class FormFiller
-{
+class FormFiller {
     formElements;
 
     init() {
@@ -19,8 +18,9 @@ class FormFiller
         document.body.insertAdjacentHTML(
             'beforeend',
             '<div id="form-filler-panel">'
-                + '<button id="form-filler-action-filled">F</button>'
-                + '<button id="form-filler-action-clear">C</button>'
+                + '<button id="form-filler-action-filled">+</button>'
+                + '<button id="form-filler-action-clear">-</button>'
+                + '<button id="form-filler-action-sh">H</button>'
             + '</div>');
     }
 
@@ -36,7 +36,7 @@ class FormFiller
         for (let input of this.formElements) {
             switch (input.type) {
                 case 'textarea':
-                    input.value ='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas libero.';
+                    input.value = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas libero.';
                     break;
 
                 case 'email':
@@ -45,13 +45,6 @@ class FormFiller
 
                 case 'checkbox':
                     input.checked = true;
-                    break;
-
-                case 'hidden':
-                    console.log('Hidden input: "' + input.name + '": "' + input.value + '');
-
-                    // View hidden inputs
-                    // input.setAttribute('type','text');
                     break;
 
                 default:
@@ -69,6 +62,15 @@ class FormFiller
             }
         }
     }
+
+    showHiddenInputs() {
+        for (let input of document.querySelectorAll('input[type="hidden"]')) {
+            console.log('Hidden input: "' + input.name + '": "' + input.value + '');
+            input.insertAdjacentHTML('beforebegin', '<br/>' + input.name + ' ');
+            input.insertAdjacentHTML('afterbegin', '<br/>');
+            input.setAttribute('type', 'text');
+        }
+    }
 }
 
 window.onload = function WindowLoad(event) {
@@ -78,14 +80,21 @@ window.onload = function WindowLoad(event) {
     document
         .getElementById('form-filler-action-clear')
         .addEventListener('click', function () {
-            FormFillerClass.cleanInputs();
-        }
-    );
+                FormFillerClass.cleanInputs();
+            }
+        );
 
     document
         .getElementById('form-filler-action-filled')
         .addEventListener('click', function () {
-            FormFillerClass.filled();
-        }
-    );
+                FormFillerClass.filled();
+            }
+        );
+
+    document
+        .getElementById('form-filler-action-sh')
+        .addEventListener('click', function () {
+                FormFillerClass.showHiddenInputs();
+            }
+        );
 }
