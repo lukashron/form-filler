@@ -2,6 +2,7 @@
     position: fixed;
     right: 0;
     top: 50%;
+    z-index: 99999;
 }
 
 #form-filler-panel button {
