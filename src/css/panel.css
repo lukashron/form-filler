@@ -1,3 +1,8 @@
+/**
+ * Form Filler
+ * https://github.com/lukashron/form-filler
+ */
+
 #form-filler-panel {
     position: fixed;
     right: 0;
@@ -21,4 +26,14 @@
     font-size: 1rem;
     border-radius: .25rem;
     cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+#form-filler-panel button:hover {
+    background-color: #023786;
+}
+
+#form-filler-panel .form-filler-disabled {
+    background-color: #a09f9f !important;
+    cursor: no-drop;
 }

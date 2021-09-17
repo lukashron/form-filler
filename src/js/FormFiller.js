@@ -1,3 +1,8 @@
+/**
+ * Form Filler
+ * https://github.com/lukashron/form-filler
+ */
+
 class FormFiller {
     date;
     formElements = [];
@@ -122,6 +127,8 @@ window.onload = function WindowLoad(event) {
         .getElementById('form-filler-action-sh')
         .addEventListener('click', function () {
                 FormFillerClass.showHiddenInputs();
+                this.disabled = true;
+                this.classList.add('form-filler-disabled');
             }
         );
 }
