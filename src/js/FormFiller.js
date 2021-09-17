@@ -7,7 +7,7 @@ class FormFiller {
     }
 
     init() {
-        console.log('Form filler run');
+        console.log('[Form filler] run');
 
         this.renderPanel();
         this.searchElements();
@@ -74,6 +74,8 @@ class FormFiller {
                     input.value = 'Example value ' + Math.floor(Math.random() * 1000);
             }
         }
+
+        console.log('[Form filler] inputs filled');
     }
 
     cleanInputs() {
@@ -84,6 +86,8 @@ class FormFiller {
                 input.checked = false;
             }
         }
+
+        console.log('[Form filler] inputs cleaned');
     }
 
     showHiddenInputs() {
