@@ -23,9 +23,8 @@ class FormFiller {
         document.body.insertAdjacentHTML(
             'beforeend',
             '<div id="form-filler-panel">'
-                + '<button id="form-filler-action-filled">+</button>'
-                + '<button id="form-filler-action-clear">-</button>'
-                + '<button id="form-filler-action-sh">H</button>'
+                + '<button id="form-filler-action-filler" value="fill">+</button>'
+                + '<button id="form-filler-action-sh" value="show">S</button>'
             + '</div>');
     }
 
@@ -105,16 +104,17 @@ window.onload = function WindowLoad(event) {
     FormFillerClass.init();
 
     document
-        .getElementById('form-filler-action-clear')
+        .getElementById('form-filler-action-filler')
         .addEventListener('click', function () {
-                FormFillerClass.cleanInputs();
-            }
-        );
-
-    document
-        .getElementById('form-filler-action-filled')
-        .addEventListener('click', function () {
-                FormFillerClass.filled();
+                if (this.value === 'fill') {
+                    FormFillerClass.filled();
+                    this.value = 'clear';
+                    this.innerText = '-';
+                } else {
+                    FormFillerClass.cleanInputs();
+                    this.value = 'fill';
+                    this.innerText = '+';
+                }
             }
         );
 
