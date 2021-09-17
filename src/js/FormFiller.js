@@ -1,5 +1,10 @@
 class FormFiller {
+    date;
     formElements = [];
+
+    constructor() {
+        this.date = new Date();
+    }
 
     init() {
         console.log('Form filler run');
@@ -47,8 +52,22 @@ class FormFiller {
                     input.value = 'test@example.domain';
                     break;
 
+                case 'date':
+                    // https://stackoverflow.com/questions/23593052/format-javascript-date-as-yyyy-mm-dd
+                    input.value = this.date.toISOString().split('T')[0];
+                    break;
+
                 case 'checkbox':
                     input.checked = true;
+                    break;
+
+                case 'number':
+                    let rn = (Math.random() * 1000);
+                    input.value = Math.floor(rn);
+                    break;
+
+                case 'tel':
+                    input.value = '+123 505 303 999';
                     break;
 
                 default:
