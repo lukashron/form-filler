@@ -1,8 +1,11 @@
 <?php
-
-/**
- * Form Filler
- * https://github.com/lukashron/form-filler
+/*
+ * This file is part of the Form-filler package.
+ *
+ * (c) Lukas Hron <info@lukashron.cz>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
  */
 
 declare (strict_types=1);
